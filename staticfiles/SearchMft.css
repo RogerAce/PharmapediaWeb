@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css?family=Ubuntu:400,700');
+
+body{
+  font-family: 'Ubuntu', sans-serif;
+}
+
+.brand{
+  position: relative;
+  bottom: 40%;
+  right: 35%;
+  text-align: left!important;
+  text-shadow: 5px 10px 18px #6c757d;
+}
+
+.head-brand{
+  color: white;
+  font-size: 3rem;
+  font-weight: 700!important;
+}
+
+
+.search-section{
+  width: 100%;
+  height: 100vh;
+  background-image: url("/staticfiles/Images/main.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+
+}
+
+.rgba-blue-strong{
+  background-color: rgba(50,168,246,.9)!important;
+}
+
+.form-submit{
+  position: absolute;
+  left: 30%;
+  top: 50%;
+  width: 100%;
+
+}
+
+
+input{
+  text-indent: 20px;
+  height: 45px;
+  width: 50%;
+}
+
+
+.searching-box{
+  border: none;
+  position: relative;
+  right: 120px;
+ box-shadow: 5px 10px 18px #6c757d;
+}
+
+.search-btn{
+  position: relative;
+  right: 120px;
+  color: white;
+  outline: none;
+  background-color: black!important;
+  font-size: 1rem;
+}

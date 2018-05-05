@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+    {% load static %}
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="initial-scale=1.0">
+    <meta charset="utf-8">
+        <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 100%;
+      }
+      .pac-controls label {
+        font-family: Roboto;
+        font-size: 13px;
+        font-weight: 300;
+      }
+
+      #pac-input {
+        background-color: #fff;
+        font-family: Roboto;
+        font-size: 15px;
+        font-weight: 300;
+        margin-left: 12px;
+        padding: 0 11px 0 13px;
+        text-overflow: ellipsis;
+        width: 400px;
+      }
+
+      #pac-input:focus {
+        border-color: #4d90fe;
+      }
+
+
+    </style>
+
+    <title>Your Search</title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" crossorigin="anonymous">
+
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<!-- Bootstrap core CSS -->
+
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+<!-- Material Design Bootstrap -->
+
+
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.0/css/mdb.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="{% static 'location.css'%}" >
+</head>
+
+<body>
+
+
+
+<div class="container-fluid">
+    <div class="search-form z-depth-1" style="background-color: royalblue; padding-bottom: 40px;">
+        <div>
+            <h1 class="white-text" style="margin-top: 15px; display: inline-block; padding-left: 10px";>Pharmapedia</h1>
+    </div>
+</div>
+</div>
+
+
+<input id="latclicked" style="visibility: hidden; margin-top: 0; padding-top: 0;">
+
+<input id="longclicked" style="visibility: hidden">
+
+<div class="container">
+
+    <div class="row">
+        <div class="col-md-6">
+            <input id="pac-input" class="controls" type="text" placeholder="Search Box"/>
+        </div>
+        <div class="col-md-6">
+            <a href="#" class="btn btn-primary" onclick="gcoord()" style="background-color: royalblue!important;">Get Location</a>
+        </div>
+    </div>
+
+</div>
+
+<div class="row">
+    <div class="col-md-12" style="height: 400px; width: 100%;">
+        <div id="map"></div>
+    </div>
+</div>
+
+
+<div id="alpha" >
+    {% for i in result %}
+<div class="card" style="margin-top: 80px; max-width:400px;">
+  <img src="{% static 'Images/stoesL.jpg'%}" style="width:100%;" class="z-depth-2">
+  <h1 style="padding-top: 20px;" name="name{{i.index}}">{{i.name}}</h1>
+  <p class="title" id="dis{{i.index}}">Distance: {{i.distance}}</p>
+  <p id="add{{i.index}}">Address: {{i.address}}</p>
+  <p id="phn{{i.index}}">Phone Number: {{i.phone}}</p>
+   <p id="time{{i.index}}">Time: {{i.time}}</p>
+    <p id="coord{{i.index}}" style="display: none">{{i.coordinate}}</p>
+  <p style="padding-top: 30px;"><button id="{{i.index}}" onclick="getLocate(this.id)">Get Location</button></p>
+</div>
+{% endfor %}
+
+</div>
+
+<section class="myfooter" style="margin-top: 80px; margin-bottom: 0; padding: 0;">
+	<footer class="w3-center w3-black w3-padding-64 w3-opacity w3-hover-opacity-off">
+  <a href="#home" class="w3-button w3-light-grey" onclick="topFunction()" id="myBtn" title="Go to top"><i class="fa fa-arrow-up w3-margin-right"></i>To the top</a>
+  <div class="w3-xlarge w3-section">
+    <i class="fa fa-facebook-official w3-hover-opacity"></i>
+    <i class="fa fa-instagram w3-hover-opacity"></i>
+    <i class="fa fa-snapchat w3-hover-opacity"></i>
+    <i class="fa fa-pinterest-p w3-hover-opacity"></i>
+    <i class="fa fa-twitter w3-hover-opacity"></i>
+    <i class="fa fa-linkedin w3-hover-opacity"></i>
+  </div>
+  <p>Powered by <a href="https://http://miet.ac.in/" target="_blank" class="w3-hover-text-green">Pharmapedia</a></p>
+</footer>
+</section>
+
+<input id="search" value={{search}} style="visibility: hidden;" >
+
+<script type="text/javascript">
+
+
+
+    function gcoord(){
+
+       // var url_string = window.location.href;
+       /// var url = new URL(url_string);
+       // var c = url.searchParams.get("search");
+        var z=  document.getElementById("search").value;
+        var x = document.getElementById('latclicked').value;
+        var y = document.getElementById('longclicked').value;
+        window.location.href = "dlocate?search=" + z + "&loc=" + x + "," + y;
+    }
+
+    function getLocate(stId){
+        var url_string = window.location.href;
+        var url = new URL(url_string);
+        var loc = url.searchParams.get("loc");
+        var coord = stId.textContent;
+        console.log(coord);
+        window.location = "https://maps.google.fr/maps?saddr=" + loc + "&daddr=" + coord;
+    }
+
+</script>
+
+    <script>
+ function initAutocomplete() {
+        var map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: 28.9730, lng: 77.6410},
+          zoom: 13,
+          mapTypeId: 'roadmap'
+        });
+
+        // Create the search box and link it to the UI element.
+        var input = document.getElementById('pac-input');
+        var searchBox = new google.maps.places.SearchBox(input);
+        map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+
+        // Bias the SearchBox results towards current map's viewport.
+        map.addListener('bounds_changed', function() {
+          searchBox.setBounds(map.getBounds());
+        });
+
+        var markers = [];
+        var markerx;
+        // Listen for the event fired when the user selects a prediction and retrieve
+        // more details for that place.
+        google.maps.event.addListener(map,'rightclick',function(event) {
+            document.getElementById('latclicked').value = event.latLng.lat();
+            document.getElementById('longclicked').value =  event.latLng.lng();
+            //alert(markers.length);
+            if (markerx!=null)
+              markerx.setMap(null);
+            markerx = new google.maps.Marker({
+            position: event.latLng,
+                map: map,
+            title: event.latLng.lat()+', '+event.latLng.lng()
+            });
+      });
+
+
+        searchBox.addListener('places_changed', function() {
+          var places = searchBox.getPlaces();
+
+          if (places.length == 0) {
+            return;
+          }
+          // Clear out the old markers.
+          markers.forEach(function(marker) {
+            marker.setMap(null);
+          });
+          markers = [];
+
+
+          // For each place, get the icon, name and location.
+          var bounds = new google.maps.LatLngBounds();
+          places.forEach(function(place) {
+            if (!place.geometry) {
+              console.log("Returned place contains no geometry");
+              return;
+            }
+            var icon = {
+              url: place.icon,
+              size: new google.maps.Size(71, 71),
+              origin: new google.maps.Point(0, 0),
+              anchor: new google.maps.Point(17, 34),
+              scaledSize: new google.maps.Size(25, 25)
+            };
+
+            // Create a marker for each place.
+            markers.push(new google.maps.Marker({
+              map: map,
+              icon: icon,
+              title: place.name,
+              position: place.geometry.location
+            }));
+
+            if (place.geometry.viewport) {
+              // Only geocodes have viewport.
+              bounds.union(place.geometry.viewport);
+            } else {
+              bounds.extend(place.geometry.location);
+            }
+          });
+          map.fitBounds(bounds);
+        });
+      }
+
+    </script>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC-RcPFqIj8JWMM2RoNWMdJCeInto66Q6M&libraries=places&callback=initAutocomplete"
+         async defer></script>
+
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+    {% load static %}
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Search</title>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" crossorigin="anonymous">
+
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<!-- Bootstrap core CSS -->
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+<!-- Material Design Bootstrap -->
+
+
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.0/css/mdb.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="{% static 'styles.css'%}" >
+</head>
+
+<body>
+<div class="container-fluid">
+    <div class="search-form z-depth-1" style="background-color: royalblue; padding-bottom: 40px;">
+        <div>
+            <h1 class="white-text" style="margin-top: 15px; display: inline-block; padding-left: 10px";>Pharmapedia</h1>
+        <form class="form-inline" style="display: inline">
+            <input class="form-control form-control-sm mr-3 w-75" type="text" placeholder="Search" aria-label="Search">
+            <i class="fa fa-search" aria-hidden="true"></i>
+        </form>
+    </div>
+</div>
+</div>
+
+    <div class="container">
+        <div class="container-fluid" style="margin-top: 80px;">
+            List of Medicine Under {{mft}}
+            {% for i in  data%}
+                <div class="card-header z-depth-3" style="background-color: #9C27B0;">
+                    <div class=class="row">
+                        <a  href="Dlist?search={{i.bname}}">{{i.bname}}</a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <section class="myfooter" style="margin-top: 80px;">
+	<footer class="w3-center w3-black w3-padding-64 w3-opacity w3-hover-opacity-off">
+  <a href="#home" class="w3-button w3-light-grey" onclick="topFunction()" id="myBtn" title="Go to top"><i class="fa fa-arrow-up w3-margin-right"></i>To the top</a>
+  <div class="w3-xlarge w3-section">
+    <i class="fa fa-facebook-official w3-hover-opacity"></i>
+    <i class="fa fa-instagram w3-hover-opacity"></i>
+    <i class="fa fa-snapchat w3-hover-opacity"></i>
+    <i class="fa fa-pinterest-p w3-hover-opacity"></i>
+    <i class="fa fa-twitter w3-hover-opacity"></i>
+    <i class="fa fa-linkedin w3-hover-opacity"></i>
+  </div>
+  <p>Powered by <a href="https://http://miet.ac.in/" target="_blank" class="w3-hover-text-green">Pharmapedia</a></p>
+</footer>
+    </section>
+
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" crossorigin="anonymous"></script>
+    <script src="assets/js/jquery.min.js"></script>
+</body>
+</html>
