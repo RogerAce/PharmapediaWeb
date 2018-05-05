@@ -51,7 +51,7 @@ def dlocation(request):
 
         loc=loc.split(",")
 
-        url = "https://pharmapedia.herokuapp.com/store#alpha?search="+search+"&lglt="+loc[0]+","+loc[1];
+        url = "https://pharmapedia.herokuapp.com/store?search="+search+"&lglt="+loc[0]+","+loc[1];
         res = requests.get(url)
         obj = json.loads(res.content)
         result = []
