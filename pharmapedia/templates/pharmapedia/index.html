@@ -21,37 +21,44 @@
 
 </head>
 
-<body>
- <link rel="stylesheet" href="{%static 'styles.css'%}">
+<body background= "{%static 'Images/logo2.jpg'%}" style="background-size:cover;background-repeat: no-repeat;" >
+
     <div class="row brand">
-                <div style="height:100px;" class="col-md-12 text-left">
-                    <center> <h1 class="" id="ns">Pharmapedia</h1></center>
+                <div  class="col-md-12 text-left">
+                    <center> <h1 style="height:100px;   id="ns">Pharmapedia</h1></center>
                 </div>
             </div>
 
-    <div class="view search-section">
+    <div style="width:100%; height:20" class="view search-section">
 
-        <div style="width:100%;" class="mask flex-center rgba-blue-strong">
+        <div  class="mask flex-center rgba-blue-strong">
 
         </div>
-        <div style="width:100%;" class="row form-submit">
+        <div class="row form-submit">
             <div class="col-md-12">
-                <form action="#" method="get">
-                    <input type="text"  class="searching-box" id="search-med" name="search" placeholder="Search By Brand Or Salts..."/>
-                    <button class="btn btn-primary search-btn" onclick="DisplayMed()" name="BNAME">Search</button>
+              <center>  <form action="#" method="get">
+                    <center><input type="text"   style="width:80%;background-color:#cccccc; padding:10px" class="searching-box" id="search-med" name="search" placeholder="Search By Brand Or Salts...Eg Paracetamol"/>
+                    </center>
+					<button class="btn btn-primary search-btn" onclick="DisplayMed()" name="BNAME">Search</button>
                 </form>
+				</center>
             </div>
         </div>
-        <div class="row filter-btns" style="position: relative;top: 70%; left: 25%; text-transform: capitalize">
-            <div class="col-md-6">
-                <button class="btn btn-primary search-btn" id="mft-btn" style="background-color: transparent!important; border: 2px solid white!important;" onclick="SearchByMft()" name="BNAME">Manufacturer</button>
-            </div>
-            <div class="col-md-6">
-                <button class="btn btn-primary search-btn" id="ban-btn" style="background-color: transparent!important; border: 2px solid white!important;" onclick="BannedDrugs()" name="BNAME">Banned Drugs</button>
-            </div>
-        </div>
+
     </div>
 
+	<center> 
+	 
+        <div class="row filter-btns" >
+          <div class="col-md-6">
+                <button class="btn btn-primary search-btn" id="mft-btn" style="color:black !important; background-color: #d9d9d9!important; border: 2px solid white!important;" onclick="SearchByMft()" name="BNAME">Manufacturer</button>
+            </div>
+            <div class="col-md-6">
+                <button class="btn btn-primary search-btn" id="ban-btn" style="color:black !important; background-color: #d9d9d9!important; border: 2px solid white!important;" onclick="BannedDrugs()" name="BNAME">Banned Drugs</button>
+            </div>
+        </div>
+		</center>
+	
 
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" crossorigin="anonymous"></script>
     <script src="assets/js/jquery.min.js"></script>
