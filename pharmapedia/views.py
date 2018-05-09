@@ -23,7 +23,7 @@ def index(request):
                 "mft": obj["result"][i][3], "price": obj["result"][i][4], "infoset": obj["result"][i][5]}
         index = index+1;
         result.append(sets)
-    print(result)
+   # print(result)
     return render(request, "pharmapedia/index2.html", context={"result": result})
 
 
@@ -64,7 +64,7 @@ def dlocation(request):
                     "coordinate": obj["result"][i][6]["coord"]}
             index = index + 1
             result.append(sets)
-        print(result)
+       # print(result)
         return render(request, "pharmapedia/Location.html", context={"search":search,"result": result})
     else:
         search = request.GET['search']
@@ -88,7 +88,7 @@ def index2(request):
                 "mode": obj["result"][i][2], "mft": obj["result"][i][3], "price": obj["result"][i][4], "infoset": obj["result"][i][5]}
         index = index + 1;
         result.append(sets)
-    print(result)
+    #print(result)
     return render(request, "pharmapedia/index2.html", context={"result": result})
 
 

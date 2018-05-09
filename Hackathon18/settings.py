@@ -121,9 +121,18 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
-
+PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 STATIC_URL = '/static/'
-
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR,"pharmapedia" ,'static'),
+
+)
+print("\n",STATICFILES_DIRS,"\n",PROJECT_ROOT,"\n",BASE_DIR ,"\n",STATIC_ROOT,"\n")
 STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+site_media = os.path.join(
+    os.path.dirname(__file__),os.path.dirname(__file__)+"static/", "../", "pharmapedia","Images", "static", 'site_media',"static/Images"
+)
+
+##
