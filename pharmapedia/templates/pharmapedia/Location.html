@@ -149,9 +149,10 @@
         var url_string = window.location.href;
         var url = new URL(url_string);
         var loc = url.searchParams.get("loc");
-        var coord = stId.textContent;
-        console.log(coord);
-        window.location = "https://maps.google.fr/maps?saddr=" + loc + "&daddr=" + coord;
+		stId="coord"+stId;
+        var coord = document.getElementById(stId).textContent;
+        console.log(stId+" "+coord);
+        //window.location = "https://maps.google.com/maps?saddr=" + loc + "&daddr=" + coord;
     }
 
 </script>
